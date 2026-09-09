@@ -310,6 +310,27 @@ Checks before you build:
 
 ## Step 3: Generate the assets
 
+### Before you generate: the material gate
+
+Name what the scroll will carry before you build anything. If the honest answer
+is "a mockup I will draw in CSS", there is no material yet, and the page will
+read as a concept rather than a product.
+
+- **A product with a real interface** — a screen recording or stills of the real
+  thing. A running app, a simulator, a staging URL. Ask for it.
+- **A physical product, a place, a person** — photography, or generated stills
+  through `kie.mjs`.
+- **Neither is available and there is no `KIE_AI_API_KEY`** — say so and stop.
+  Tell the operator what the page needs and where it could come from, and let
+  them decide.
+
+That last case is the one worth spelling out, because the failure is quiet. With
+no material the kit still builds: the acts fill with typography, parallax and
+authored diagrams, everything verifies, and what ships is a competent landing
+page rather than the thing this kit exists for. Nobody is told that the subject
+was missing. Substituting an authored mockup for the subject and carrying on is
+not a fallback; it is the bug.
+
 Full pipeline, prompt scaffolds and model notes: [references/assets.md](references/assets.md).
 
 Short version:
@@ -413,6 +434,22 @@ machine only), and stop it when you are done: `--lan` makes everything under
 Fix what you found and shoot it again. Report what you actually verified and
 what you did not.
 
+## Baseline completeness
+
+A brief that does not enumerate sections is not permission to ship a single
+screen. Every build in `EXAMPLES.md` runs **5 to 15 acts over 10.8 to 13.8vh of
+film**. A page that resolves in one act is a demo of one device, not a page, and
+an operator who simply said "build me a site" is owed a page.
+
+When no structure was specified, the default is still complete. It opens by
+saying what this is, spends its acts carrying the argument, and closes on
+something that resolves and holds. Somewhere along the way a visitor must be
+able to answer: what is this, what does it do, who is it for, what does it cost,
+and what happens next. On a product page that is the floor, not the ceiling.
+
+This does not turn the kit into a conventional section stack. Pick the grammar
+in Step 2 as always. It only says that the grammar has to carry a whole page.
+
 ## Hard rules
 
 Ship-blockers, not preferences. Each one is a thing that makes a page read as
@@ -441,6 +478,8 @@ machine-made.
 | `transition: all`, or animating width/height/top/left | `transform` and `opacity`; `clip-path` for wipes |
 | Gradient text, neon glow, zero-offset coloured halo shadows | Weight and size for emphasis; shadows with offset and blur |
 | Autoplaying audio, or any audio at all on a scrub clip | Strip the track. `encode.sh` already does |
+| Building when there is no material for the scroll to carry | Name the material first. If there is none and none can be generated, say so and stop. See the material gate in Step 3 |
+| A default build that resolves in one or two acts because the brief never enumerated sections | An unspecified brief still gets a complete page. See Baseline completeness |
 | Shipping without running Step 5 | Run Step 5 |
 
 ## Output
