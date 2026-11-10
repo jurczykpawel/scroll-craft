@@ -128,7 +128,8 @@ Keep it short. Eight questions, asked in one pass:
 8. **What assets do they already have?** Footage, photos, product shots, a
    brand kit, clips of themselves. Real assets anchor the world and cut
    generation cost; the answer decides what gets graded and encoded versus
-   generated. "Nothing" is a fine answer and means a fully generated world.
+   generated. "Nothing" can mean a generated world (requires `KIE_AI_API_KEY`)
+   or another supported material route. See the material gate in Step 3.
 
 Write the answers into `<workspace>/builds/<name>/BRIEF.md` before any act planning, in
 their words, not paraphrased into marketing prose. Everything downstream reads
@@ -312,24 +313,28 @@ Checks before you build:
 
 ### Before you generate: the material gate
 
-Name what the scroll will carry before you build anything. If the honest answer
-is "a mockup I will draw in CSS", there is no material yet, and the page will
-read as a concept rather than a product.
+Name what the scroll will carry before you build anything. An invented CSS
+mockup is not evidence of a real product. Choose material that fits the subject
+and the grammar:
 
-- **A product with a real interface** — a screen recording or stills of the real
-  thing. A running app, a simulator, a staging URL. Ask for it.
-- **A physical product, a place, a person** — photography, or generated stills
-  through `kie.mjs`.
-- **Neither is available and there is no `KIE_AI_API_KEY`** — say so and stop.
-  Tell the operator what the page needs and where it could come from, and let
-  them decide.
+- **A product with a real interface:** use a recording, stills, or access to the
+  running app, simulator, or staging URL. Generated screens are no substitute.
+  If none is available, say what is missing and stop, whether or not a generation
+  key is set.
+- **A physical product, a place, a person:** use photography or generated stills
+  through `kie.mjs`, grounded in verified subject details.
+- **A brand whose material is words:** a typographic poster is a supported route.
+  See [references/uniqueness.md](references/uniqueness.md), §2.5.
+- **A working surface built into the page:** the functioning interface itself
+  can be the material, not a decorative imitation of an unavailable product.
+  See [references/uniqueness.md](references/uniqueness.md), §2.3.
+- **A modeled 3D subject:** use a real render when it fits the subject, following
+  [references/approved-collection.md](references/approved-collection.md), §3.
 
-That last case is the one worth spelling out, because the failure is quiet. With
-no material the kit still builds: the acts fill with typography, parallax and
-authored diagrams, everything verifies, and what ships is a competent landing
-page rather than the thing this kit exists for. Nobody is told that the subject
-was missing. Substituting an authored mockup for the subject and carrying on is
-not a fallback; it is the bug.
+If no supported material is available or can be made, say so and stop. Tell the
+operator what the page needs and where it could come from. A generation key is
+needed only for the generated-media route. Do not quietly replace a missing
+subject with filler typography, parallax, diagrams, or an invented product.
 
 Full pipeline, prompt scaffolds and model notes: [references/assets.md](references/assets.md).
 
@@ -436,16 +441,18 @@ what you did not.
 
 ## Baseline completeness
 
-A brief that does not enumerate sections is not permission to ship a single
-screen. Every build in `EXAMPLES.md` runs **5 to 15 acts over 10.8 to 13.8vh of
-film**. A page that resolves in one act is a demo of one device, not a page, and
-an operator who simply said "build me a site" is owed a page.
+A brief that does not enumerate sections still calls for a complete page.
+`EXAMPLES.md` includes multi-act pages and continuous worldflights with no acts.
+Its lengths are examples, not quotas: follow Step 2 and never add filler to meet
+an act count or scroll length.
 
 When no structure was specified, the default is still complete. It opens by
-saying what this is, spends its acts carrying the argument, and closes on
-something that resolves and holds. Somewhere along the way a visitor must be
-able to answer: what is this, what does it do, who is it for, what does it cost,
-and what happens next. On a product page that is the floor, not the ceiling.
+saying what this is, carries the argument, and closes on something that resolves
+and holds. On a product page, a visitor must be able to answer: what is this,
+what does it do, who is it for, and what happens next? Use verified pricing when
+available; when pricing is private or does not exist, give an honest next step
+appropriate to the product's state, such as contact or a waitlist. Never invent
+a price.
 
 This does not turn the kit into a conventional section stack. Pick the grammar
 in Step 2 as always. It only says that the grammar has to carry a whole page.
@@ -478,8 +485,8 @@ machine-made.
 | `transition: all`, or animating width/height/top/left | `transform` and `opacity`; `clip-path` for wipes |
 | Gradient text, neon glow, zero-offset coloured halo shadows | Weight and size for emphasis; shadows with offset and blur |
 | Autoplaying audio, or any audio at all on a scrub clip | Strip the track. `encode.sh` already does |
-| Building when there is no material for the scroll to carry | Name the material first. If there is none and none can be generated, say so and stop. See the material gate in Step 3 |
-| A default build that resolves in one or two acts because the brief never enumerated sections | An unspecified brief still gets a complete page. See Baseline completeness |
+| Building when there is no material for the scroll to carry | Name the material first. If no supported material route is available, say so and stop. See the material gate in Step 3 |
+| An incomplete default build because the brief never enumerated sections | An unspecified brief still gets a complete page. See Baseline completeness |
 | Shipping without running Step 5 | Run Step 5 |
 
 ## Output
